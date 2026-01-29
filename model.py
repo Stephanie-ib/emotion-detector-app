@@ -10,7 +10,7 @@ def create_emotion_model():
     Output: 4 emotions (Happy, Sad, Angry, Neutral)
     """
     model = Sequential([
-        Input(shape=(48, 48, 1)),  # Use Input layer instead of input_shape
+        Input(shape=(48, 48, 1)),  # Fixed for Keras 3
         Conv2D(32, (3, 3), activation='relu'),
         MaxPooling2D((2, 2)),
         
@@ -23,7 +23,7 @@ def create_emotion_model():
         Flatten(),
         Dense(128, activation='relu'),
         Dropout(0.5),
-        Dense(4, activation='softmax')  # 4 emotions
+        Dense(4, activation='softmax')
     ])
     
     model.compile(optimizer='adam',
@@ -39,7 +39,6 @@ def train_and_save_model():
     print("Creating model...")
     model = create_emotion_model()
     
-    # Create dummy training data
     print("Generating dummy training data...")
     X_train = np.random.rand(100, 48, 48, 1)
     y_train = tf.keras.utils.to_categorical(np.random.randint(0, 4, 100), 4)
@@ -47,10 +46,9 @@ def train_and_save_model():
     print("Training model...")
     model.fit(X_train, y_train, epochs=5, batch_size=32, verbose=1)
     
-    print("Saving model in new format...")
-    # Save in the newer Keras 3 format
-    model.save('model.h5', save_format='h5')
-    print("Model saved as model.h5")
+    print("Saving model...")
+    model.save('model.h5')
+    print("Model saved as model.h5 (Keras 3 compatible)")
 
 if __name__ == "__main__":
     train_and_save_model()
