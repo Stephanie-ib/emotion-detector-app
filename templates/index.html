@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emotion Detection App</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <h1>🎭 Emotion Detection</h1>
+            <p class="subtitle">Upload a face image to detect emotion</p>
+            
+            <form action="/predict" method="POST" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="username">Your Name:</label>
+                    <input type="text" id="username" name="username" required placeholder="Enter your name">
+                </div>
+                
+                <div class="form-group">
+                    <label for="file">Upload Image:</label>
+                    <input type="file" id="file" name="file" accept="image/*" required>
+                </div>
+                
+                <button type="submit" class="btn-submit">Detect Emotion</button>
+            </form>
+            
+            {% if prediction %}
+            <div class="result-section">
+                <h2>Results for {{ username }}</h2>
+                <div class="emotion-result">
+                    <p class="emotion-label">Detected Emotion:</p>
+                    <p class="emotion-value">{{ prediction }}</p>
+                    <p class="confidence">Confidence: {{ confidence }}%</p>
+                </div>
+                
+                {% if image_path %}
+                <div class="uploaded-image">
+                    <img src="{{ url_for('static', filename=image_path) }}" alt="Uploaded Image">
+                </div>
+                {% endif %}
+            </div>
+            {% endif %}
+        </div>
+        
+        <footer>
+            <p>Built with TensorFlow & Flask | By Stephanie Ibrahim</p>
+        </footer>
+    </div>
+</body>
+</html>

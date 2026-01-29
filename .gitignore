@@ -1,0 +1,29 @@
+# --- SENSITIVE INFO ---
+.env
+*.key
+*.pem
+credentials.json
+
+# --- DEPENDENCIES & BUILD ---
+node_modules/
+venv/
+.venv/
+env/
+dist/
+build/
+out/
+target/
+*.log
+
+# --- SYSTEM FILES ---
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# --- IDE/EDITOR SETTINGS ---
+.vscode/
+.idea/
+*.swp
+*.swo
+.project
+.settings/
