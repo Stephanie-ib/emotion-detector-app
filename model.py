@@ -59,12 +59,12 @@ def train_and_save_model():
     
     print("Step 4: Saving model...")
     # Save in Keras 3 format explicitly
-    model.save('model.h5', save_format='h5')
-    print("✓ Model saved as model.h5\n")
+    model.save('emotion_model.keras')
+    print("✓ Model saved as emotion_model.keras\n")
     
     # Verify the model can be loaded
     print("Step 5: Verifying model can be loaded...")
-    test_model = tf.keras.models.load_model('model.h5')
+    test_model = tf.keras.models.load_model('emotion_model.keras')
     print("✓ Model verified successfully!\n")
     
     print("="*50)

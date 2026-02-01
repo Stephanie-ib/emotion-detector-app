@@ -16,7 +16,7 @@ app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024  # 16MB max file size
 os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
 
 # Load the trained model
-model = load_model('model.h5')
+model = load_model('emotion_model.keras')
 
 # Emotion labels
 EMOTIONS = ['Angry', 'Happy', 'Neutral', 'Sad']
