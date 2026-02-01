@@ -1,9 +1,12 @@
-from flask import Flask, render_template, request, redirect, url_for
 import os
+os.environ['TF_USE_LEGACY_KERAS'] = '0'  
+
+from flask import Flask, render_template, request, redirect, url_for
 import sqlite3
 from tensorflow.keras.models import load_model
 from PIL import Image
 import numpy as np
+
 
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = 'static/uploads'
